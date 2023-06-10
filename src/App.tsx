@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import arrow from "./assets/arrow.svg";
 import Button from "./components/button";
 import ErrorMessage from "./components/errorMessage";
+import Loading from "./components/loading";
 import Svg from "./components/svg";
 import Title from "./components/title";
 import TranslatedText from "./components/translatedText";
@@ -16,16 +17,19 @@ interface ResponseData {
 function App() {
   const inputText = useRef<HTMLInputElement>(null);
   const [displayText, setDisplayText] = useState<string>("");
-  const [hidden, setHidden] = useState<string>("hidden");
+  const [errorHidden, setErrorHidden] = useState<string>("hidden");
+  const [loadingHidden, setLoadingHidden] = useState<string>("hidden");
   const translate = async (): Promise<void> => {
     // displayText初期化
     setDisplayText("");
     // テキストが入力されなかった場合、処理終了
     if (inputText.current?.value === "") {
-      setHidden("");
+      setErrorHidden("");
       return;
     }
     if (inputText.current === null) return;
+    // loading表示
+    setLoadingHidden("");
     // APIGateway呼び出し
     const ResponseData: ResponseData = await (
       await fetch(
@@ -37,7 +41,9 @@ function App() {
     // 翻訳されたテキストの表示
     setDisplayText(ResponseData.outputText);
     // エラー文削除
-    setHidden("hidden");
+    setErrorHidden("hidden");
+    // loading非表示
+    setLoadingHidden("hidden");
   };
 
   return (
@@ -54,9 +60,10 @@ function App() {
           />
           <div className="inputTextUnderline" />
         </div>
-        <ErrorMessage hidden={hidden} />
+        <ErrorMessage hidden={errorHidden} />
         <Button buttonClick={translate} />
         <Svg svgPath={arrow} />
+        <Loading hidden={loadingHidden} />
         <TranslatedText displayText={displayText} />
       </div>
     </div>
