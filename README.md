@@ -13,7 +13,7 @@
 
 ## ブランチ命名規則
 ```
-{ CommitMessageCategory }-task-01-▲▲
+git checkout -b { CommitMessageCategory }-task-01-▲▲
 ```
 
 ## Skill
