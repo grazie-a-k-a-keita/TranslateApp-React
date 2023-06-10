@@ -35,7 +35,7 @@ function App() {
       await fetch(
         // APIGateway URL
         // 例）https://xxxxx/ステージ名/リソース名?input_text=こんにちは
-        `https://g8xgamnui6.execute-api.ap-northeast-1.amazonaws.com/test/translate?input_text=${inputText.current?.value}`
+        `https://xxxxx/xxxxx/xxxxx?input_text=${inputText.current?.value}`
       )
     ).json();
     // 翻訳されたテキストの表示
