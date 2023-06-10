@@ -1,3 +1,5 @@
+import "../css/loading.css";
+
 interface Props {
   hidden: string;
 }
