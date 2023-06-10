@@ -1,0 +1,111 @@
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.titleBox {
+  border-top: solid #1c0040 3px;
+  border-bottom: solid #1c0040 3px;
+  margin: 100px auto;
+  margin-top: 100px;
+  width: 400px;
+  height: 150px;
+  background-color: #eae4af;
+}
+
+.titleText {
+  font-size: 56px;
+  font-weight: bold;
+  color: #1c0040;
+  line-height: 150px;
+  text-align: center;
+}
+
+.inputTextBox {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.inputText {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1c0040;
+  border: none;
+  outline: none;
+  width: 400px;
+  height: 27px;
+  text-align: center;
+  background-color: #a1ab91;
+}
+
+.inputTextUnderline {
+  position: relative;
+  margin-top: 8px;
+  border-top: solid #1c0040 3px;
+}
+
+.inputTextUnderline::before,
+.inputTextUnderline::after {
+  position: absolute;
+  bottom: 0px;
+  width: 0px;
+  height: 3px;
+  content: "";
+  background-color: #49513c;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.inputTextUnderline::before {
+  left: 50%;
+}
+
+.inputTextUnderline::after {
+  right: 50%;
+}
+
+input:focus + .inputTextUnderline::before,
+input:focus + .inputTextUnderline::after {
+  width: 50%;
+}
+
+.buttonBox {
+  text-align: center;
+}
+
+.translateButton {
+  background-color: #eae4af;
+  border: solid #1c0040 3px;
+  border-radius: 20px;
+  width: 120px;
+  height: 40px;
+  margin-top: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #1c0040;
+}
+
+.translateButton:active {
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.translateButton:focus {
+  outline: none;
+}
+
+.arrowBox {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.translatedTextBox {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.translatedText {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1c0040;
+}

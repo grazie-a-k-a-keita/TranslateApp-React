@@ -127,3 +127,8 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+/* 背景色設定 */
+html {
+  background-color: #a1ab91;
+}
