@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+.hidden {
+  display: none;
+}
+
 .titleBox {
   border-top: solid #1c0040 3px;
   border-bottom: solid #1c0040 3px;
@@ -67,6 +71,14 @@
 input:focus + .inputTextUnderline::before,
 input:focus + .inputTextUnderline::after {
   width: 50%;
+}
+
+.errorMessage {
+  margin: 8px 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #49513c;
 }
 
 .buttonBox {
