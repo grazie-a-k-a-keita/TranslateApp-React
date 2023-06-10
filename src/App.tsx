@@ -1,7 +1,13 @@
 import { useRef, useState } from "react";
 
-import "./App.css";
 import arrow from "./assets/arrow.svg";
+import Button from "./components/button";
+import ErrorMessage from "./components/errorMessage";
+import Loading from "./components/loading";
+import Svg from "./components/svg";
+import Title from "./components/title";
+import TranslatedText from "./components/translatedText";
+import "./css/App.css";
 
 interface ResponseData {
   inputText: string;
@@ -11,36 +17,39 @@ interface ResponseData {
 function App() {
   const inputText = useRef<HTMLInputElement>(null);
   const [displayText, setDisplayText] = useState<string>("");
-  const [hidden, setHidden] = useState<string>("hidden");
+  const [errorHidden, setErrorHidden] = useState<string>("hidden");
+  const [loadingHidden, setLoadingHidden] = useState<string>("hidden");
   const translate = async (): Promise<void> => {
     // displayText初期化
     setDisplayText("");
     // テキストが入力されなかった場合、処理終了
     if (inputText.current?.value === "") {
-      setHidden("");
+      setErrorHidden("");
       return;
     }
     if (inputText.current === null) return;
+    // loading表示
+    setLoadingHidden("");
     // APIGateway呼び出し
     const ResponseData: ResponseData = await (
       await fetch(
         // APIGateway URL
         // 例）https://xxxxx/ステージ名/リソース名?input_text=こんにちは
-        `https://g8xgamnui6.execute-api.ap-northeast-1.amazonaws.com/test/translate?input_text=${inputText.current?.value}`
+        `https://xxxxx/xxxxx/xxxxx?input_text=${inputText.current?.value}`
       )
     ).json();
     // 翻訳されたテキストの表示
     setDisplayText(ResponseData.outputText);
     // エラー文削除
-    setHidden("hidden");
+    setErrorHidden("hidden");
+    // loading非表示
+    setLoadingHidden("hidden");
   };
 
   return (
     <div className="App">
       <div className="container">
-        <div className="titleBox">
-          <p className="titleText">翻訳サイト</p>
-        </div>
+        <Title titleName="翻訳サイト" />
         <div className="inputTextBox">
           <input
             type="text"
@@ -51,20 +60,11 @@ function App() {
           />
           <div className="inputTextUnderline" />
         </div>
-        <div className={hidden}>
-          <p className="errorMessage">入力してください！</p>
-        </div>
-        <div className="buttonBox">
-          <button type="submit" className="translateButton" onClick={translate}>
-            翻訳
-          </button>
-        </div>
-        <div className="arrowBox">
-          <img src={arrow} alt="arrow" />
-        </div>
-        <div className="translatedTextBox">
-          <p className="translatedText">{displayText}</p>
-        </div>
+        <ErrorMessage hidden={errorHidden} />
+        <Button buttonClick={translate} />
+        <Svg svgPath={arrow} />
+        <Loading hidden={loadingHidden} />
+        <TranslatedText displayText={displayText} />
       </div>
     </div>
   );
