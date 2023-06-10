@@ -1,42 +1,111 @@
-#root {
-  max-width: 1280px;
+.container {
+  width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+}
+
+.titleBox {
+  border-top: solid #1c0040 3px;
+  border-bottom: solid #1c0040 3px;
+  margin: 100px auto;
+  margin-top: 100px;
+  width: 400px;
+  height: 150px;
+  background-color: #eae4af;
+}
+
+.titleText {
+  font-size: 56px;
+  font-weight: bold;
+  color: #1c0040;
+  line-height: 150px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.inputTextBox {
+  width: 400px;
+  margin: 0 auto;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.inputText {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1c0040;
+  border: none;
+  outline: none;
+  width: 400px;
+  height: 27px;
+  text-align: center;
+  background-color: #a1ab91;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.inputTextUnderline {
+  position: relative;
+  margin-top: 8px;
+  border-top: solid #1c0040 3px;
 }
 
-.card {
-  padding: 2em;
+.inputTextUnderline::before,
+.inputTextUnderline::after {
+  position: absolute;
+  bottom: 0px;
+  width: 0px;
+  height: 3px;
+  content: "";
+  background-color: #49513c;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
 }
 
-.read-the-docs {
-  color: #888;
+.inputTextUnderline::before {
+  left: 50%;
+}
+
+.inputTextUnderline::after {
+  right: 50%;
+}
+
+input:focus + .inputTextUnderline::before,
+input:focus + .inputTextUnderline::after {
+  width: 50%;
+}
+
+.buttonBox {
+  text-align: center;
+}
+
+.translateButton {
+  background-color: #eae4af;
+  border: solid #1c0040 3px;
+  border-radius: 20px;
+  width: 120px;
+  height: 40px;
+  margin-top: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #1c0040;
+}
+
+.translateButton:active {
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.translateButton:focus {
+  outline: none;
+}
+
+.arrowBox {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.translatedTextBox {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.translatedText {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1c0040;
 }

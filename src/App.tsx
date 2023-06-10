@@ -1,36 +1,41 @@
-import { useState } from "react";
-
 import "./App.css";
-import reactLogo from "./assets/react.svg";
+import arrow from "./assets/arrow.svg";
 
 function App() {
-  const [count, setCount] = useState(0);
+  function translate(): void {
+    // eslint-disable-next-line no-console
+    console.log("Hello world!");
+  }
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="container">
+        <div className="titleBox">
+          <p className="titleText">翻訳サイト</p>
+        </div>
+        <div className="inputTextBox">
+          <input
+            type="text"
+            className="inputText"
+            placeholder="翻訳したい日本語を入力"
+          />
+          <div className="inputTextUnderline" />
+        </div>
+        <div className="buttonBox">
+          <button type="submit" className="translateButton" onClick={translate}>
+            翻訳
+          </button>
+        </div>
+        <div className="arrowBox">
+          <img src={arrow} alt="arrow" />
+        </div>
+        <div className="translatedTextBox">
+          <p className="translatedText">
+            If the exact weight given is unavailable, then the following rule is
+            used to determine the weight actually rendered
+          </p>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button
-          type="button"
-          onClick={() => setCount((prevCount: number) => prevCount + 1)}
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   );
 }
