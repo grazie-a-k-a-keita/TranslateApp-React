@@ -1,15 +1,5 @@
-# React Starter Project
+# TranslateApp
+翻訳APIを使った、翻訳アプリケーション
 
-React(TypeScript)の雛形
-
-## まずやること
-
-```
-yarn install
-```
-
-## サーバー起動
-
-```
-yarn dev
-```
+## Skill
+- React (TypeScript)
