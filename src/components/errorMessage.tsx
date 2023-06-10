@@ -2,12 +2,15 @@ interface Props {
   hidden: string;
 }
 
-const errorMessage = (props: Props) => (
-  <div>
-    <div className={props.hidden}>
-      <p className="errorMessage">入力してください！</p>
+function ErrorMessage(props: Props) {
+  const { hidden } = props;
+  return (
+    <div>
+      <div className={hidden}>
+        <p className="errorMessage">入力してください！</p>
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
-export default errorMessage;
+export default ErrorMessage;
