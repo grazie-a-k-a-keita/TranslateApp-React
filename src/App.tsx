@@ -1,7 +1,12 @@
 import { useRef, useState } from "react";
 
-import "./App.css";
 import arrow from "./assets/arrow.svg";
+import Button from "./components/button";
+import ErrorMessage from "./components/errorMessage";
+import Svg from "./components/svg";
+import Title from "./components/title";
+import TranslatedText from "./components/translatedText";
+import "./css/App.css";
 
 interface ResponseData {
   inputText: string;
@@ -38,9 +43,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <div className="titleBox">
-          <p className="titleText">翻訳サイト</p>
-        </div>
+        <Title titleName="翻訳サイト" />
         <div className="inputTextBox">
           <input
             type="text"
@@ -51,20 +54,10 @@ function App() {
           />
           <div className="inputTextUnderline" />
         </div>
-        <div className={hidden}>
-          <p className="errorMessage">入力してください！</p>
-        </div>
-        <div className="buttonBox">
-          <button type="submit" className="translateButton" onClick={translate}>
-            翻訳
-          </button>
-        </div>
-        <div className="arrowBox">
-          <img src={arrow} alt="arrow" />
-        </div>
-        <div className="translatedTextBox">
-          <p className="translatedText">{displayText}</p>
-        </div>
+        <ErrorMessage hidden={hidden} />
+        <Button buttonClick={translate} />
+        <Svg svgPath={arrow} />
+        <TranslatedText displayText={displayText} />
       </div>
     </div>
   );
