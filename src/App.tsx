@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useRef, useState } from "react";
 
 import arrow from "./assets/arrow.svg";
@@ -7,11 +8,14 @@ import Loading from "./components/loading";
 import Svg from "./components/svg";
 import Title from "./components/title";
 import TranslatedText from "./components/translatedText";
+
 import "./css/App.css";
 
 interface ResponseData {
-  inputText: string;
-  outputText: string;
+  data: {
+    inputText: string;
+    outputText: string;
+  };
 }
 
 function App() {
@@ -30,16 +34,16 @@ function App() {
     if (inputText.current === null) return;
     // loading表示
     setLoadingHidden("");
+
     // APIGateway呼び出し
-    const ResponseData: ResponseData = await (
-      await fetch(
-        // APIGateway URL
-        // 例）https://xxxxx/ステージ名/リソース名?input_text=こんにちは
-        `https://xxxxx/xxxxx/xxxxx?input_text=${inputText.current?.value}`
-      )
-    ).json();
+    const ResponseData: ResponseData = await axios.get(
+      // APIGateway URL
+      // 例）https://xxxxx/ステージ名/リソース名?input_text=こんにちは
+      `https://xxxxx/xxxxx/xxxxx?input_text=${inputText.current?.value}`
+    );
+
     // 翻訳されたテキストの表示
-    setDisplayText(ResponseData.outputText);
+    setDisplayText(ResponseData.data.outputText);
     // エラー文削除
     setErrorHidden("hidden");
     // loading非表示
